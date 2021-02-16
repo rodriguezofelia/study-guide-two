@@ -78,7 +78,7 @@ def find_unique_common_items(items1, items2):
         [2]
     """
 
-    return set()
+    return set(items1) and set(items2)
 
 
 def get_sum_zero_pairs(numbers):
@@ -108,7 +108,18 @@ def get_sum_zero_pairs(numbers):
         [[-1, 1], [0, 0]]
     """
 
-    return []
+    # return []
+
+    pairs = []
+
+    non-dupes = set(numbers)
+
+    for num in non-dupes:
+        if num >= 0 and -num is in non-dupes: 
+            pairs.append(num, -num)
+    
+    return pairs
+
 
 
 def top_chars(phrase):
@@ -136,7 +147,25 @@ def top_chars(phrase):
 
     """
 
-    return []
+    characters = {}
+
+    current = []
+
+    for character in phrase:
+        if character not in characters and character != " ":
+            characters[character] = 1
+        else: 
+            characters[character] += 1
+    
+    for key, value in characters.items():
+        if current = []:
+            current = value
+        elif current < value: 
+            current = value
+        else:
+            continue
+    
+    return current
 
 #####################################################################
 # You can ignore everything below this.
