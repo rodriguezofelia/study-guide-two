@@ -65,7 +65,42 @@ class StudentExam(object):
 
         print(f'The score is {self.score}')
 
+
+class Quiz(Exam):
+    """A quiz"""
+
+    def administer(self):
+        """Administer the quiz and return pass/fail"""
+
+        score = super(Quiz, self).administer()
+
+        if score > 50.00: 
+            return 1
+        else: 
+            return 0 
+        
+
+class StudentQuiz(object):
+    """Stores student's name, quiz and score for the quiz"""
+
+    def __init__(self, student, quiz):
+        self.student = student
+        self.quiz = quiz
+        self.score = None
+    
+    def take_test(self):
+        """Administers quiz and assigns score to student"""
+
+        self.score = self.quiz.administer()
+
+        if self.score:
+            print("You passed")
+        else: 
+            print("You didn't pass")
+
 def example():
+    """Shows exam, questions, and student"""
+
     exam = Exam('midterm')
 
     tuple_q = Question("Once tuples are created, they can't be what?", "changed")
@@ -87,3 +122,29 @@ def example():
     larrys_midterm.take_test()
 
 example()
+
+
+def quiz_example(): 
+    """Shows quiz, questions, and student"""
+
+    quiz = Quiz("Pop quiz")
+
+    abs_q = Question("What can you describe as hiding details we don't need?", "abstraction")
+
+    quiz.add_question(abs_q)
+
+    encap_q = Question("What can you say keeps things together?", "encapsulation")
+
+    quiz.add_question(encap_q)
+
+    poly_q = Question("What can you describe as interchangeability of components?", "polymorphism")
+
+    quiz.add_question(poly_q)
+
+    quiz_student = Student("Marie", "Barry", "123 Main Street, Austin, TX")
+
+    maries_quiz = StudentQuiz(quiz_student, quiz)
+
+    maries_quiz.take_test()
+
+quiz_example()
