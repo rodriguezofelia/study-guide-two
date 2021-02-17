@@ -53,14 +53,37 @@ class Exam(object):
 class StudentExam(object):
     """Stores student's name, exam and score for the exam"""
 
-    def __init__(self, student, exam, score):
+    def __init__(self, student, exam):
         self.student = student
         self.exam = exam
-        self.score = score
+        self.score = None
     
     def take_test(self):
         """Administers exam and assigns score to student"""
 
-        self.score = self.exam.administer
+        self.score = self.exam.administer()
 
-        print(f'The score is {self.score:.2f}')
+        print(f'The score is {self.score}')
+
+def example():
+    exam = Exam('midterm')
+
+    tuple_q = Question("Once tuples are created, they can't be what?", "changed")
+
+    exam.add_question(tuple_q)
+
+    set_q = Question("What will return a new set with only elements that present in both sets?", "intersection")
+
+    exam.add_question(set_q)
+
+    dict_q = Question("What dictionary method will get a key value pair in a tuple format?", ".items()")
+
+    exam.add_question(dict_q)
+
+    student = Student("Larry", "Barry", "123 Main Street, Austin, TX")
+
+    larrys_midterm = StudentExam(student, exam)
+
+    larrys_midterm.take_test()
+
+example()
