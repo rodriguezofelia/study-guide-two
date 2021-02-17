@@ -16,11 +16,14 @@ class Question(object):
         self.correct_answer = correct_answer
 
     def ask_and_evaluate(self):
-        """Ask a question"""
+        """Ask a question
+        
+        Will show the user a question, take in their answer
+        and if the answer is correct it will return True
+        """
 
         answer = input(self.question)
-        self.correct_answer == answer 
-        return self.correct_answer
+        return self.correct_answer == answer 
 
 
 class Exam(object):
@@ -28,8 +31,22 @@ class Exam(object):
 
     def __init__(self, name):
         self.name = name
-        self.question = []
+        self.questions = []
     
     def add_question(self, question):
         """Add question to exam"""
-        self.question.append(question)
+
+        self.questions.append(question)
+
+    def administer(self):
+        """Administer the test and return the score"""
+
+        score = 0
+
+        for question in self.questions:
+            if question.ask_and_evaluate():
+                score += 1
+
+        return 100 * (float(score) / len(self.questions))
+        
+
