@@ -15,10 +15,18 @@ class Question(object):
         self.question = question
         self.correct_answer = correct_answer
 
+    def ask_and_evaluate(self):
+        """Ask a question"""
+
+        answer = input(self.question)
+        self.correct_answer == answer 
+        return self.correct_answer
+
+
 class Exam(object):
     """An exam"""
 
-    def __init__(self, name)
+    def __init__(self, name):
         self.name = name
         self.question = []
     
