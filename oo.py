@@ -50,3 +50,17 @@ class Exam(object):
         return 100 * (float(score) / len(self.questions))
         
 
+class StudentExam(object):
+    """Stores student's name, exam and score for the exam"""
+
+    def __init__(self, student, exam, score):
+        self.student = student
+        self.exam = exam
+        self.score = score
+    
+    def take_test(self):
+        """Administers exam and assigns score to student"""
+
+        self.score = self.exam.administer
+
+        print(f'The score is {self.score:.2f}')
