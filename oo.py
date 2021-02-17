@@ -23,4 +23,5 @@ class Exam(object):
         self.question = []
     
     def add_question(self, question):
-        self.
+        """Add question to exam"""
+        self.question.append(question)
